@@ -1,5 +1,9 @@
 # yamlier
-a Super simple cli yaml editor
+### a Super simple cli yaml editor.
+If you have to edit yaml file on CI/CD pipeline or other situations, just use it.
+
+## install
+`wget https://github.com/jujumilk3/yamlier/releases/download/v0.1.0/yamlier`
 
 ## usage
 1. yamlier --help
@@ -46,4 +50,4 @@ languages:
 name: changed_name  # name changed
 skill: Elite
 ```
-※ CAUTION: new yaml's Keys are ordered. 
+※ CAUTION: new yaml's keys are ordered. 
