@@ -8,9 +8,8 @@ import (
 	"log"
 	"path/filepath"
 	"yamlier/cmd/internal/util"
+	"yamlier/config"
 )
-
-const minRequiredArgumentsLength int = 3
 
 // editCmd represents the edit command
 var editCmd = &cobra.Command{
@@ -23,7 +22,7 @@ If [output_filepath] doesn't set, This creates 'yamlier-outout.yaml'
 How to access hierarchical value: key.innerKey.innerinnerKey
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) < minRequiredArgumentsLength {
+		if len(args) < config.EditMinRequiredArgumentsLength {
 			log.Fatalf("yamlier edit [file_path] [key] [value] | [options]")
 		}
 
@@ -31,7 +30,7 @@ How to access hierarchical value: key.innerKey.innerinnerKey
 		findingKey := args[1]
 		inputValue := args[2]
 		outputFilename := "./yamlier-output.yaml"
-		if len(args) > minRequiredArgumentsLength {
+		if len(args) > config.EditMinRequiredArgumentsLength {
 			outputFilename = args[3]
 		}
 
@@ -47,6 +46,9 @@ How to access hierarchical value: key.innerKey.innerinnerKey
 		}
 
 		innerMap, matchedKey := util.FindValue(findingKey, yamlMap)
+		if innerMap[matchedKey] == nil {
+			log.Fatalf("error: There's no value of [%s]", findingKey)
+		}
 		innerMap[matchedKey] = inputValue
 
 		yamlOutput, err := yaml.Marshal(yamlMap)
