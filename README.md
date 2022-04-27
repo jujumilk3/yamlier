@@ -3,10 +3,37 @@
 If you have to edit yaml file on CI/CD pipeline or other situations, just use it.
 
 ## install
-`wget https://github.com/jujumilk3/yamlier/releases/download/v0.1.0/yamlier`  
+`wget https://github.com/jujumilk3/yamlier/releases/download/v0.2.0/yamlier.{os}.{arcihtecture} -O ./yamlier`  
 `chmod +x ./yamlier`  
 Of course, if you want to use it globally, You have to move it into `bin` dir
 that referenced by your account. 
+
+### for example
+1. MacOS(amd64)
+   ```shell
+   $ wget https://github.com/jujumilk3/yamlier/releases/download/v0.2.0/yamlier.darwin.amd64 -O ./yamlier
+   chmod +x ./yamlier
+   ./yamlier edit ./yamlier edit developer.yaml languages.perl poor ./developer-modified.yaml
+   ```
+2. github actions (github actions' ubuntu-latest image is amd64 architecture)
+   ```yaml
+   ...
+   jobs:
+     build:
+       runs-on: ubuntu-latest
+   ...
+       - name: wget
+         uses: wei/wget@v1
+         with:
+           args: https://github.com/jujumilk3/yamlier/releases/download/v0.2.0/yamlier.linux.amd64 -O yamlier
+
+       - name: change file mod
+         run: sudo chmod +x ./yamlier
+       
+       - name: run yamlier
+         run: ./yamlier edit ./developer.yaml name changed_name ./developer-yamlier.yaml
+   ...
+   ```
 
 ## usage
 1. yamlier --help
