@@ -1,4 +1,6 @@
 # yamlier
+<img width="271" alt="yamlier-logo" src="https://user-images.githubusercontent.com/41659814/165521454-60ff0a26-a552-4e68-8fab-00ec94320dd2.png">
+
 ### a Super simple cli yaml editor.
 If you have to edit yaml file on CI/CD pipeline or other situations, just use it.
 
