@@ -40,7 +40,11 @@ that referenced by your account.
 ## usage
 1. yamlier --help
 2. yamlier edit [flags]
-   1. `yamlier edit [file_path] [key] [value] | [output_filepath]` 
+   1. `yamlier edit --help`   
+   2. `yamlier edit [file_path] [key] [value] | [output_filepath]` 
+3. yamlier get [flags]
+   1. `yamlier get --help`
+   2. `yamlier get [file_path] [key]` 
 
 ## example
 ```yaml
